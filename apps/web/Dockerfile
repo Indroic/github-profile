@@ -45,8 +45,6 @@ COPY apps/web/ ./apps/web/
 
 COPY turbo.json ./
 
-RUN pnpm --filter=api generate
-
 RUN pnpm --filter=web build
 
 
