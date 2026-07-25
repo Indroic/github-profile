@@ -31,6 +31,10 @@ const nextConfig = {
         source: "/api/trpc/:path*",
         destination: `${apiInternalUrl}/trpc/:path*`,
       },
+      {
+        source: "/user/:username",
+        destination: `${apiInternalUrl}/user/username*`,
+      }
     ];
   },
 
