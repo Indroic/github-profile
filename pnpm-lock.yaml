@@ -143,10 +143,10 @@ importers:
         version: 5.101.4(react@19.2.0)
       '@trpc/client':
         specifier: ^11.18.0
-        version: 11.18.0(@trpc/server@11.18.0(typescript@7.0.2))(typescript@7.0.2)
+        version: 11.18.0(@trpc/server@11.18.0(typescript@5.9.3))(typescript@5.9.3)
       '@trpc/tanstack-react-query':
         specifier: ^11.18.0
-        version: 11.18.0(@tanstack/react-query@5.101.4(react@19.2.0))(@trpc/client@11.18.0(@trpc/server@11.18.0(typescript@7.0.2))(typescript@7.0.2))(@trpc/server@11.18.0(typescript@7.0.2))(react@19.2.0)(typescript@7.0.2)
+        version: 11.18.0(@tanstack/react-query@5.101.4(react@19.2.0))(@trpc/client@11.18.0(@trpc/server@11.18.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.18.0(typescript@5.9.3))(react@19.2.0)(typescript@5.9.3)
       next:
         specifier: 16.2.0
         version: 16.2.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -182,8 +182,8 @@ importers:
         specifier: ^9.39.1
         version: 9.39.1(jiti@2.7.0)
       typescript:
-        specifier: 7.0.2
-        version: 7.0.2
+        specifier: 5.9.3
+        version: 5.9.3
 
   packages/api:
     dependencies:
@@ -192,13 +192,13 @@ importers:
         version: 5.101.4(react@19.2.0)
       '@trpc/client':
         specifier: ^11.18.0
-        version: 11.18.0(@trpc/server@11.18.0(typescript@7.0.2))(typescript@7.0.2)
+        version: 11.18.0(@trpc/server@11.18.0(typescript@5.9.3))(typescript@5.9.3)
       '@trpc/server':
         specifier: ^11.18.0
-        version: 11.18.0(typescript@7.0.2)
+        version: 11.18.0(typescript@5.9.3)
       '@trpc/tanstack-react-query':
         specifier: ^11.18.0
-        version: 11.18.0(@tanstack/react-query@5.101.4(react@19.2.0))(@trpc/client@11.18.0(@trpc/server@11.18.0(typescript@7.0.2))(typescript@7.0.2))(@trpc/server@11.18.0(typescript@7.0.2))(react@19.2.0)(typescript@7.0.2)
+        version: 11.18.0(@tanstack/react-query@5.101.4(react@19.2.0))(@trpc/client@11.18.0(@trpc/server@11.18.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.18.0(typescript@5.9.3))(react@19.2.0)(typescript@5.9.3)
       api:
         specifier: workspace:*
         version: link:../../apps/api
@@ -213,8 +213,8 @@ importers:
         specifier: 19.2.2
         version: 19.2.2
       typescript:
-        specifier: 7.0.2
-        version: 7.0.2
+        specifier: 5.9.3
+        version: 5.9.3
 
   packages/eslint-config:
     devDependencies:
@@ -5977,26 +5977,26 @@ snapshots:
 
   '@tokenizer/token@0.3.0': {}
 
-  '@trpc/client@11.18.0(@trpc/server@11.18.0(typescript@7.0.2))(typescript@7.0.2)':
+  '@trpc/client@11.18.0(@trpc/server@11.18.0(typescript@5.9.3))(typescript@5.9.3)':
     dependencies:
-      '@trpc/server': 11.18.0(typescript@7.0.2)
-      typescript: 7.0.2
+      '@trpc/server': 11.18.0(typescript@5.9.3)
+      typescript: 5.9.3
 
   '@trpc/server@11.18.0(typescript@5.9.2)':
     dependencies:
       typescript: 5.9.2
 
-  '@trpc/server@11.18.0(typescript@7.0.2)':
+  '@trpc/server@11.18.0(typescript@5.9.3)':
     dependencies:
-      typescript: 7.0.2
+      typescript: 5.9.3
 
-  '@trpc/tanstack-react-query@11.18.0(@tanstack/react-query@5.101.4(react@19.2.0))(@trpc/client@11.18.0(@trpc/server@11.18.0(typescript@7.0.2))(typescript@7.0.2))(@trpc/server@11.18.0(typescript@7.0.2))(react@19.2.0)(typescript@7.0.2)':
+  '@trpc/tanstack-react-query@11.18.0(@tanstack/react-query@5.101.4(react@19.2.0))(@trpc/client@11.18.0(@trpc/server@11.18.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.18.0(typescript@5.9.3))(react@19.2.0)(typescript@5.9.3)':
     dependencies:
       '@tanstack/react-query': 5.101.4(react@19.2.0)
-      '@trpc/client': 11.18.0(@trpc/server@11.18.0(typescript@7.0.2))(typescript@7.0.2)
-      '@trpc/server': 11.18.0(typescript@7.0.2)
+      '@trpc/client': 11.18.0(@trpc/server@11.18.0(typescript@5.9.3))(typescript@5.9.3)
+      '@trpc/server': 11.18.0(typescript@5.9.3)
       react: 19.2.0
-      typescript: 7.0.2
+      typescript: 5.9.3
 
   '@tsconfig/node10@1.0.12': {}
 

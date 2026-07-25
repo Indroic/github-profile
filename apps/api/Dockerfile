@@ -19,6 +19,8 @@ RUN pnpm install \
 
 FROM base AS builder
 
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+
 COPY --from=installer /app/node_modules                   ./node_modules
 COPY --from=installer /app/apps/api/node_modules          ./apps/api/node_modules
 COPY --from=installer /app/packages/typescript-config     ./packages/typescript-config
@@ -27,7 +29,7 @@ COPY apps/api/ ./apps/api/
 
 RUN pnpm --filter=api build
 
-RUN pnpm --filter=api deploy --prod /app/release
+RUN pnpm --filter=api deploy --prod --ignore-scripts /app/release
 
 
 FROM node:24-alpine AS runner
