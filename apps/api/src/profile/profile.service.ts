@@ -1,8 +1,8 @@
 
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException, InternalServerErrorException } from '@nestjs/common';
 import { PublicGithubProfile } from './interfaces';
 import { HttpService } from '@nestjs/axios';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { AxiosResponse } from 'axios';
 
 const BASE_GITHUB_PROFILE_ENDPOINT = 'https://api.github.com/users'
@@ -12,11 +12,18 @@ export class GithubProfileService {
   constructor(private readonly httpService: HttpService) { }
 
   get({ username }: { username: string }): Observable<AxiosResponse<PublicGithubProfile>> {
-    const request = this.httpService.get(
-      this.makeProfileAPIUrl(username)
-    )
+    return this.httpService
+      .get<PublicGithubProfile>(
+        this.makeProfileAPIUrl(username)
+      ).pipe(
+        catchError((error) => {
+          if (error.response?.status === 404) {
+            return throwError(() => new NotFoundException(`User ${username} not found on Github`))
+          }
 
-    return request
+          return throwError(() => new InternalServerErrorException(`Error fetching user profile from Github`))
+        })
+      );
   }
 
   private makeProfileAPIUrl(username: string) {
