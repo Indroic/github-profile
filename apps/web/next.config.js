@@ -6,6 +6,10 @@ const monorepoRoot = path.join(
   "../..",
 );
 
+// URL del API dentro de la red de Docker (en local, el API de desarrollo)
+const apiInternalUrl =
+  process.env.API_INTERNAL_URL ?? "http://localhost:4000";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Genera un servidor Node.js standalone para Docker
@@ -17,6 +21,18 @@ const nextConfig = {
     root: monorepoRoot,
   },
   outputFileTracingRoot: monorepoRoot,
+
+  // El navegador llama a /api/trpc (mismo origen) y el servidor de Next
+  // reenvía al API por la red interna: sin CORS ni dominio público para el
+  // API. El destino se resuelve en build (queda fijado en routes-manifest).
+  async rewrites() {
+    return [
+      {
+        source: "/api/trpc/:path*",
+        destination: `${apiInternalUrl}/trpc/:path*`,
+      },
+    ];
+  },
 
   images: {
     remotePatterns: [

@@ -32,7 +32,7 @@ export function Providers({ children }: {children: React.ReactNode}) {
     createTRPCClient<AppRouter>({
       links: [
         httpBatchLink({
-          url: process.env.NEXT_PUBLIC_API_URL,
+          url: process.env.NEXT_PUBLIC_API_URL ?? "/api/trpc",
         }),
       ],
     }),

@@ -25,8 +25,10 @@ FROM base AS builder
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
-ARG NEXT_PUBLIC_API_URL=http://api:4000/trpc
+ARG NEXT_PUBLIC_API_URL=/api/trpc
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+ARG API_INTERNAL_URL=http://api:4000
+ENV API_INTERNAL_URL=$API_INTERNAL_URL
 ENV NEXT_TELEMETRY_DISABLED=1
 
 COPY --from=installer /app/node_modules                    ./node_modules
