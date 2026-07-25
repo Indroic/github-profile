@@ -5,7 +5,7 @@ interface StatChipProps {
   value: number;
 }
 
-function StatChip({ label, value }: StatChipProps) {
+function StatChip({ label, value = 0 }: StatChipProps) {
   const formatted =
     value >= 1000 ? `${(value / 1000).toFixed(1)}k` : value.toLocaleString("es");
 
