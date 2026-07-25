@@ -6,8 +6,8 @@ import { ProfileCard } from "./components/profile/ProfileCard";
 import { ProfileEmpty } from "./components/profile/ProfileEmpty";
 
 export default function Home() {
-  const [username, setUsername] = useState<string>("");
-  const [query, setQuery]       = useState<string>("");
+  const [username, setUsername] = useState<string>("indroic");
+  const [query, setQuery]       = useState<string>("indroic");
 
   const handleSearch = (value: string) => {
     const trimmed = value.trim();

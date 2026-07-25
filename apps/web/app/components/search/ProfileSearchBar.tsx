@@ -32,7 +32,7 @@ export function ProfileSearchBar({ value, onChange, onSearch }: ProfileSearchBar
         ref={inputRef}
         id="github-username-input"
         type="text"
-        placeholder="Busca un usuario de GitHub…"
+        placeholder="Ej: torvalds, indroic…"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={handleKey}
