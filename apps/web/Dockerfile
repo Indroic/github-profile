@@ -37,8 +37,10 @@ COPY --from=installer /app/packages/api/node_modules       ./packages/api/node_m
 COPY --from=installer /app/packages/typescript-config      ./packages/typescript-config
 COPY --from=installer /app/packages/eslint-config          ./packages/eslint-config
 
-COPY packages/ui/    ./packages/ui/
-COPY packages/api/   ./packages/api/
+COPY packages/typescript-config/ ./packages/typescript-config/
+COPY packages/eslint-config/     ./packages/eslint-config/
+COPY packages/ui/                ./packages/ui/
+COPY packages/api/               ./packages/api/
 
 COPY apps/api/ ./apps/api/
 COPY apps/web/ ./apps/web/
