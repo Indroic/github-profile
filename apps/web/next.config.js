@@ -33,7 +33,7 @@ const nextConfig = {
       },
       {
         source: "/user/:username",
-        destination: `${apiInternalUrl}/user/username*`,
+        destination: `${apiInternalUrl}/user/:username*`,
       }
     ];
   },
