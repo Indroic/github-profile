@@ -1,0 +1,71 @@
+services:
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    image: github-profile-api:latest
+    container_name: github-profile-api
+
+    environment:
+      NODE_ENV: production
+      PORT: "4000"
+
+    ports:
+      - "4000:4000"
+
+    networks:
+      - github-profile-net
+      - dokploy-network
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:4000/trpc || exit 1"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:4000/trpc
+    image: github-profile-web:latest
+    container_name: github-profile-web
+
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      HOSTNAME: "0.0.0.0"
+
+    ports:
+      - "3000:3000"
+
+    networks:
+      - github-profile-net
+      - dokploy-network
+
+    depends_on:
+      api:
+        condition: service_healthy
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:3000 || exit 1"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+
+networks:
+  github-profile-net:
+    driver: bridge
+
+  dokploy-network:
+    external: true

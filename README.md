@@ -1,6 +1,128 @@
-# Turborepo starter
+# GitHub Profile Viewer
 
-This Turborepo starter is maintained by the Turborepo core team.
+Monorepo con **NestJS + tRPC** (API) y **Next.js 16 + HeroUI v3** (Web) para visualizar perfiles públicos de GitHub.
+
+## Stack
+
+| Capa | Tecnología |
+|------|-----------|
+| Frontend | Next.js 16, HeroUI v3, Tailwind CSS v4 |
+| Backend  | NestJS 11, nestjs-trpc, Axios |
+| Tipos compartidos | tRPC, Zod |
+| Monorepo | Turborepo + pnpm workspaces |
+| Contenedores | Docker + Docker Compose |
+
+## Estructura
+
+```
+apps/
+  api/   → NestJS + tRPC  (puerto 4000)
+  web/   → Next.js 16     (puerto 3000)
+packages/
+  api/   → Tipos tRPC compartidos (@repo/api)
+  ui/    → Wrapper de HeroUI (@repo/ui)
+  typescript-config/
+  eslint-config/
+```
+
+---
+
+## Despliegue con Docker
+
+### Inicio rápido
+
+```bash
+# Construye y levanta ambos servicios
+docker compose up --build
+
+# En segundo plano
+docker compose up --build -d
+```
+
+Acceso:
+- **Web** → http://localhost:3000
+- **API** → http://localhost:4000/trpc
+
+### URL del API personalizada
+
+Por defecto, `NEXT_PUBLIC_API_URL` apunta a `http://localhost:4000/trpc`. Para producción con un dominio real:
+
+```bash
+docker compose build \
+  --build-arg NEXT_PUBLIC_API_URL=https://api.tudominio.com/trpc
+
+docker compose up -d
+```
+
+O edita `docker-compose.yml` → sección `web.build.args`.
+
+### Comandos útiles
+
+```bash
+# Ver logs en tiempo real
+docker compose logs -f
+
+# Ver logs de un servicio específico
+docker compose logs -f api
+docker compose logs -f web
+
+# Detener y eliminar contenedores
+docker compose down
+
+# Reconstruir solo un servicio
+docker compose up --build api
+docker compose up --build web
+
+# Inspeccionar estado de salud
+docker compose ps
+```
+
+---
+
+## Desarrollo local
+
+```bash
+# Instalar dependencias
+pnpm install
+
+# Terminal 1 — API (puerto 4000)
+cd apps/api && PORT=4000 pnpm start:dev
+
+# Terminal 2 — Web (puerto 3000)
+cd apps/web && pnpm dev
+```
+
+O con Turborepo:
+
+```bash
+turbo dev
+```
+
+---
+
+## Variables de entorno
+
+### `apps/web/.env.local`
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:4000/trpc
+```
+
+### `apps/api` (variables de entorno)
+
+| Variable | Por defecto | Descripción |
+|----------|-------------|-------------|
+| `PORT`   | `3000`      | Puerto del servidor NestJS |
+| `NODE_ENV` | `development` | Entorno de ejecución |
+
+---
+
+## Recursos
+
+- [HeroUI v3 Docs](https://heroui.com/docs/react)
+- [nestjs-trpc](https://nestjs-trpc.io)
+- [Turborepo Docs](https://turborepo.dev/docs)
+
 
 ## Using this example
 
