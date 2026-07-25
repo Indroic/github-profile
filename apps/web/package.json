@@ -11,8 +11,12 @@
     "check-types": "next typegen && tsc --noEmit"
   },
   "dependencies": {
+    "@repo/api": "workspace:^",
     "@repo/ui": "workspace:*",
     "@tailwindcss/postcss": "^4.3.3",
+    "@tanstack/react-query": "^5.101.4",
+    "@trpc/client": "^11.18.0",
+    "@trpc/tanstack-react-query": "^11.18.0",
     "next": "16.2.0",
     "postcss": "^8.5.23",
     "react": "^19.2.0",

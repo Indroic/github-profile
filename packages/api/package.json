@@ -2,9 +2,11 @@
   "name": "@repo/api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/index.tsx",
+  "types": "./src/index.tsx",
   "exports": {
-    "./*": "./src/*.ts"
+    ".": "./src/index.tsx",
+    "./*": "./src/*.tsx"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,11 +15,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tanstack/react-query": "^5.101.4",
+    "@trpc/client": "^11.18.0",
+    "@trpc/server": "^11.18.0",
+    "@trpc/tanstack-react-query": "^11.18.0",
     "api": "workspace:*",
-    "@trpc/server": "^11.18.0"
+    "react": "^19.2.0"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
+    "@types/react": "19.2.2",
     "typescript": "7.0.2"
   }
 }
